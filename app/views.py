@@ -35,11 +35,6 @@ def contact():
             email = myform.email.data
             subject = myform.subject.data
             message = myform.message.data
-
-            flash('You have successfully filled out the form', 'success')
-            return render_template('result.html', name=name, email=email,subject=subject, message = message)
-
-        flash_errors(ContactForm)
     return render_template('contact.html', form=myform)
 
 ###
