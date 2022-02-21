@@ -5,16 +5,20 @@
     <form method="post" action="{{ url_for('contact') }}">
         {{ form.csrf_token }}
         <div class="form-group">
+            <p></p>
             {{ form.name.label }} {{ form.name(class="form-control") }}
         </div>
         <div class="form-group">
+            <p></p>
             {{ form.email.label }} {{ form.email(class="form-control", placeholder="jdoe@example.com") }}
         </div>
         <div class="form-group">
+            <p></p>
             {{ form.subject.label }} {{ form.subject(class="form-control") }}
         </div>
 
         <div class="form-group">
+            <p></p>
             {{ form.message.label }} {{ form.message(class="form-control") }}
         </div>
     <button type="submit" class="btn btn-primary">Submit</button>
