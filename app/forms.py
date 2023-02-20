@@ -6,7 +6,10 @@ from wtforms.validators import DataRequired, Email
 
 
 class ContactForm(FlaskForm):
-    name = StringField('Name', validators=[DataRequired()])
-    email = StringField('Email',validators=[DataRequired(),Email()])
-    subject = StringField('Subject',validators=[DataRequired()])
-    message = StringField('Message', validators=[DataRequired()])
+    proprtytitle = StringField('Property Title', validators=[DataRequired()])
+    description = StringField('Description',validators=[DataRequired()])
+    rooms = StringField('No. of Rooms',validators=[DataRequired()])
+    bathrooms = StringField('No. of Bathrooms', validators=[DataRequired()])
+    price = StringField('Price', validators=[DataRequired()])
+    propertytype = StringField('Property Type', validators=[DataRequired()])
+    location = StringField('Location', validators=[DataRequired()])

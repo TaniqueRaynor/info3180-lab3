@@ -1,8 +1,5 @@
 from app import app
-from flask import message_flashed, render_template, request, redirect, url_for, flash
-from .forms import ContactForm
-from flask_mail import Message
-from .__init__ import mail
+from flask import render_template, request, redirect, url_for, flash
 
 
 ###
@@ -20,29 +17,13 @@ def about():
     """Render the website's about page."""
     return render_template('about.html', name="Mary Jane")
 
-@app.route('/contact', methods=['GET','POST'])
-def contact():
-    myform = ContactForm()
 
-    if request.method == 'POST':
-        if myform.validate_on_submit():
-            name = myform.name.data
-            email = myform.email.data
-            subject = myform.subject.data
-            message = myform.message.data
-
-            msg = Message(subject,
-                          sender=(name,"myemail@gmail"),
-                          recipients=[email])
-            msg.body = message
-            mail.send(msg)
-            flash('You have successfully filled out the form', 'success')
-            return render_template('home.html')
-
-        flash_errors(ContactForm)
-    return render_template('contact.html', form=myform)
+###
+# The functions below should be applicable to all Flask apps.
+###
 
 
+# Flash errors from the form if validation fails
 def flash_errors(form):
     for field, errors in form.errors.items():
         for error in errors:
@@ -75,6 +56,3 @@ def add_header(response):
 def page_not_found(error):
     """Custom 404 page."""
     return render_template('404.html'), 404
-
-
-
